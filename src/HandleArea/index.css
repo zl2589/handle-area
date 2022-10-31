@@ -1,0 +1,8 @@
+.handle-area {
+  position: relative;
+  user-select: none;
+}
+
+.box {
+  position: absolute;
+}
