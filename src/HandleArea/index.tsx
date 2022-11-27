@@ -67,9 +67,14 @@ function HandleArea(props: Props, ref: any) {
     onDown && onDown(e);
   }
   function onMouseMove(e: any) {
+    const domRect = areaRef.current.getBoundingClientRect();
+    const totalLeft = e.clientX < coordinate.x1! ? e.clientX : coordinate.x1;
+    const totalTop = e.clientY < coordinate.y1! ? e.clientY : coordinate.y1;
+    const fnLeft = totalLeft - (domRect?.left || 0);
+    const fnTop = totalTop - (domRect?.top || 0);
     const _syl = {
-      left: (e.clientX < coordinate.x1! ? e.clientX : coordinate.x1) + "px",
-      top: (e.clientY < coordinate.y1! ? e.clientY : coordinate.y1) + "px",
+      left: fnLeft + "px",
+      top: fnTop + "px",
       backgroundColor: bgColor,
       width: Math.abs(e.clientX - coordinate.x1!) + "px",
       height: Math.abs(e.clientY - coordinate.y1!) + "px",
@@ -84,9 +89,14 @@ function HandleArea(props: Props, ref: any) {
       x2: e.clientX,
       y2: e.clientY,
     };
+    const domRect = areaRef.current.getBoundingClientRect();
+    const totalLeft = e.clientX < coordinate.x1! ? e.clientX : coordinate.x1;
+    const totalTop = e.clientY < coordinate.y1! ? e.clientY : coordinate.y1;
+    const fnLeft = totalLeft - (domRect?.left || 0);
+    const fnTop = totalTop - (domRect?.top || 0);
     const _syl = {
-      left: (e.clientX < coordinate.x1! ? e.clientX : coordinate.x1) + "px",
-      top: (e.clientY < coordinate.y1! ? e.clientY : coordinate.y1) + "px",
+      left: fnLeft + "px",
+      top: fnTop + "px",
       backgroundColor: "",
       width: Math.abs(e.clientX - coordinate.x1!) + "px",
       height: Math.abs(e.clientY - coordinate.y1!) + "px",
